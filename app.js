@@ -44,7 +44,24 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 
-
+hbs.registerHelper('inicioMes',function(inicio){
+    switch (inicio) {
+      case "Domingo":
+        return options.fn(7)
+      case "Lunes":
+        return options.fn(6)
+      case "Martes":
+      return options.fn(5)  
+      case "Miércoles":
+        return options.fn(4)
+      case "Jueves":
+        return options.fn(3)
+      case "Viernes":
+      return options.fn(2)  
+      case "Sábado":
+        return options.fn(1)
+    }  
+})
 
 // default value for title local
 app.locals.title = 'Pueblito';
@@ -53,5 +70,6 @@ module.exports = app;
 
 
 const index = require('./routes/index');
+const { options } = require('./routes/index');
 app.use('/', index);
 
