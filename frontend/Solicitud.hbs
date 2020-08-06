@@ -1,4 +1,62 @@
-<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
+    <div class="container">
+        <div class="row">
+            <div class='col-sm-6' style="margin-top:10%">
+                <h4>Seleccione fecha y hora</h4>
+                <select class="selectpicker show-tick" id="btnGroupDropEvento" style="height:5.668%;"  >
+                    <optgroup>
+                        <option value="">Seleccione su evento</option>
+                        <option value="Bautizo">Bautizo</option>
+                        <option value="Comunión">Comunión</option>
+                        <option value="Boda">Boda</option>
+                        <option value="Aniversario luctuoso">Aniversario luctuoso</option>
+                        <option value="Intención">Intención</option>
+                    </optgroup>
+                </select>
+            </div>
+            <div class='col-sm-6' style="margin-top:10%; ">
+                <div class="form-group">
+                    <h4>Seleccione fecha y hora</h4>
+                    <div class='input-group date' id='fecha'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="row">
+                   <table class="table">
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>Column heading</th>
+                        <th>Column heading</th>
+                        <th>Column heading</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="active">
+                        <th scope="row">1</th>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                            <td>Column content</td>
+                        </tr>
+                        
+                    </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div> 
+<script type="text/javascript">
+    $(function () {
+        $('#fecha').datetimepicker({locale:'es'});
+    });
+</script>
+
+{{!-- <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="/javascripts/solicitud/solicitud.js" type="text/javascript"></script>
@@ -85,4 +143,4 @@
 
 
 
-</div>
+</div> --}}

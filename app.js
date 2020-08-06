@@ -43,25 +43,25 @@ app.set('views', path.join(__dirname, 'frontend'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-
-hbs.registerHelper('inicioMes',function(inicio){
-    switch (inicio) {
-      case "Domingo":
-        return options.fn(7)
-      case "Lunes":
-        return options.fn(6)
-      case "Martes":
-      return options.fn(5)  
-      case "Miércoles":
-        return options.fn(4)
-      case "Jueves":
-        return options.fn(3)
-      case "Viernes":
-      return options.fn(2)  
-      case "Sábado":
-        return options.fn(1)
-    }  
-})
+//hbs helper example
+// hbs.registerHelper('inicioMes',function(inicio){
+//     switch (inicio) {
+//       case "Domingo":
+//         return options.fn(this)
+//       case "Lunes":
+//         return options.fn(this)
+//       case "Martes":
+//       return options.fn(this)  
+//       case "Miércoles":
+//         return options.fn(this)
+//       case "Jueves":
+//         return options.fn(this)
+//       case "Viernes":
+//       return options.fn(this)  
+//       case "Sábado":
+//         return options.fn(this)
+//     }  
+// })
 
 // default value for title local
 app.locals.title = 'Pueblito';
