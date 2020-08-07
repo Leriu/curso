@@ -12,8 +12,8 @@ const solicitudSchema = new Schema({
     email: String,
     confirmacion: Boolean, 
   timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+    createdAt: Boolean,
+    updatedAt: Boolean
   }
 });
 
