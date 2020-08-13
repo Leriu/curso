@@ -16,8 +16,6 @@ router.get('/solicitudes', (req, res, next) => {
     .catch(error => {
       res.render('Solicitud', {error});
     })
-     
-  
 });
 
 

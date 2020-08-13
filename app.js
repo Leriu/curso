@@ -73,3 +73,7 @@ const index = require('./routes/index');
 const { options } = require('./routes/index');
 app.use('/', index);
 
+const authRoutes = require('');
+app.use('./registro', authRoutes);
+
+
