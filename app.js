@@ -1,5 +1,4 @@
 require('dotenv').config();
-
 const bodyParser   = require('body-parser');
 const cookieParser = require('cookie-parser');
 const express      = require('express');
@@ -8,7 +7,11 @@ const hbs          = require('hbs');
 const mongoose     = require('mongoose');
 const logger       = require('morgan');
 const path         = require('path');
+// const session    = require("express-session");
+// const MongoStore = require('connect-mongo')(session);
+// const flash      = require("connect-flash");
 
+// const fileUpload = require('express-fileupload');
 
 mongoose
   .connect('mongodb://localhost/pueblito', {useNewUrlParser: true})
@@ -43,37 +46,19 @@ app.set('views', path.join(__dirname, 'frontend'));
 app.set('view engine', 'hbs');
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
-//hbs helper example
-// hbs.registerHelper('inicioMes',function(inicio){
-//     switch (inicio) {
-//       case "Domingo":
-//         return options.fn(this)
-//       case "Lunes":
-//         return options.fn(this)
-//       case "Martes":
-//       return options.fn(this)  
-//       case "Miércoles":
-//         return options.fn(this)
-//       case "Jueves":
-//         return options.fn(this)
-//       case "Viernes":
-//       return options.fn(this)  
-//       case "Sábado":
-//         return options.fn(this)
-//     }  
-// })
-
-// default value for title local
 app.locals.title = 'Pueblito';
-module.exports = app;
 
-
+// app.use(flash());
+// require('./passport')(app);
 
 const index = require('./routes/index');
 const { options } = require('./routes/index');
 app.use('/', index);
 
-const authRoutes = require('./routes/resgistro/resgistro');
-app.use('/registro', authRoutes);
+const registroRoutes = require('./routes/resgistro/resgistro');
+app.use('/registro', registroRoutes);
+
+module.exports = app;
+
 
 

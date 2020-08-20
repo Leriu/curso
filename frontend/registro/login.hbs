@@ -3,14 +3,14 @@
     <div class="row">
       <div class="col-md-6 centmar">
         <h2>Inicia sesión</h2>
-        <form action="/auth/login" id="form-container">
+        <form action="/registro/login" method="POST" id="form-container">
         <div class="form-group">
           <label for="username">Nombre de usuario</label>
-          <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Enter username">
+          <input type="text" name="username" class="form-control" id="username" aria-describedby="emailHelp" placeholder="Usuario">
         </div>
         <div class="form-group">
           <label for="exampleInputPassword1">Contraseña</label>
-          <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
         </div>
         <div class="form-group">
           {{#if message }}
@@ -22,7 +22,7 @@
         </div>
         
         <div class="form-group">
-          <p class="account-message"> ¿Aun no tienes una cuenta? <a href="./signup.hbs" class="badge badge-dark">Regístrate</a> </p>
+          <p class="account-message"> ¿Aun no tienes una cuenta? <a href="/registro/signup" class="badge badge-dark">Regístrate</a> </p>
         </div>
         
         <div class="form-group">
