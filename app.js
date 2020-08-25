@@ -12,11 +12,11 @@ const MongoStore = require('connect-mongo')(session);
 const flash      = require("connect-flash");
 
 // const fileUpload = require('express-fileupload');
-
+mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/pueblito', {useNewUrlParser: true})
-  .then(x => {
-    console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
+  .connect('mongodb://localhost/pueblito', { useMongoClient: true})
+  .then(() => {
+    console.log('Connected to Mongo!')
   })
   .catch(err => {
     console.error('Error connecting to mongo', err)
@@ -36,10 +36,10 @@ app.use(session({
   secret: "pueblito",
   resave: true,
   saveUninitialized: true,
-  cookie: { maxAge: 60 },
+  cookie: { maxAge: 3600000 },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,
-    ttl: 60 // 1 day
+    ttl: 24 * 60 * 60 // 1 day
   })
 }));
 
@@ -62,10 +62,9 @@ app.use(flash());
 require('./passport')(app);
 
 const index = require('./routes/index');
-const { options } = require('./routes/index');
 app.use('/', index);
 
-const registroRoutes = require('./routes/resgistro/resgistro');
+const registroRoutes = require('./routes/resgistro');
 app.use('/registro', registroRoutes);
 
 module.exports = app;

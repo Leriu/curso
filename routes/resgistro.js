@@ -1,9 +1,8 @@
 const express = require('express');
 const passport = require('passport');
 const registroRoutes = express.Router();
-const User = require("../../models/User");
+const User = require("../models/User");
 const bcrypt = require("bcryptjs");
-const bcryptSalt = 10;
 
 registroRoutes.get('/login', (req, res, next) => {
   res.render('registro/login', { "message": req.flash("error") });
@@ -20,9 +19,8 @@ registroRoutes.post('/login', passport.authenticate("local", {
   passReqToCallback: true
 }));
 
-registroRoutes.post("registro/signup", (req, res, next) => {
+registroRoutes.post('/signup', (req, res) => {
   const {username, email, password} = req.body;
-  console.log("entre al post")
   if (username === "" || password === "" || email === "") {
     res.render("registro/signup", { message: "Complete todos los campos..." });
     return;
@@ -34,21 +32,22 @@ registroRoutes.post("registro/signup", (req, res, next) => {
       return;
     }
 
-    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const salt = bcrypt.genSaltSync(10);
     const hashPass = bcrypt.hashSync(password, salt);
 
     const newUser = new User({
       username,
       password: hashPass,
       email: email,
+      role: "subscriber"
     });
 
-    console.log("usuario", newUser)
     newUser.save((err) => {
       if (err) {
+        console.log("error", err)
         res.render("registro/signup", { message: "Algo salió mal" });
       } else{
-        res.redirect("/resgistro/login");
+        res.redirect("/registro/login");
       }
     });
   });

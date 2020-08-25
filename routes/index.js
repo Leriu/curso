@@ -11,7 +11,11 @@ router.get('/solicitudes', (req, res, next) => {
   //La función find() me regresa un array de Documentos que pertenecen a un modelo
   Solicitudes.find()
     .then(solicitudes => {
-      res.render('Solicitud', {solicitudes});
+      if(solicitudes.length === 0) {
+        res.render('Solicitud', {message: "No hay solicitudes"});
+      } else {
+        res.render('Solicitud', {solicitudes});
+      }
     })
     .catch(error => {
       res.render('Solicitud', {error});

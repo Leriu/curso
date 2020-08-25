@@ -12,7 +12,7 @@ const userSchema = new Schema({
     }
 }, {
   timestamps: {
-    createdAt: 'created_at',
+    createdAt: 'create_at',
     updatedAt: 'updated_at'
   }
 });
